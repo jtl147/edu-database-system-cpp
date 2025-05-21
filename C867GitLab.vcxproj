@@ -129,6 +129,9 @@
   <ItemGroup>
     <ClCompile Include="C867GitLab.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="degree.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
