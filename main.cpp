@@ -1,4 +1,3 @@
-//
 //  main.cpp
 //  C867 PRFA — JYM2 Task 1: Class Roster
 //
@@ -18,6 +17,13 @@ int main() {
         "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
         "A5,Jedi,Lee,jlee1146@wgu.edu,34,7,2,14,SOFTWARE"
     };
+
+    // F1. Print course header
+    cout << "C867 Scripting and Programming - Applications" << endl;
+    cout << "Language: C++" << endl;
+    cout << "WGU Student ID: jlee1146" << endl;
+    cout << "Name: Jedi Lee" << endl;
+    cout << endl;
 
 	return 0;
 }
