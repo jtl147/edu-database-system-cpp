@@ -21,7 +21,7 @@ private:
     DegreeProgram degreeProgram;
 
 public:
-    // E2c: a constructor using all the input parameters provided
+    // E2c: constructor
     Student(string studentID,
         string firstName,
         string lastName,
@@ -32,7 +32,7 @@ public:
         int daysInCourse3,
         DegreeProgram degreeProgram);
 
-    // E2a: an accessor (i.e., getter) for each instance variable
+    // E2a: getter
     string getStudentID() const;
     string getFirstName() const;
     string getLastName() const;
@@ -41,7 +41,7 @@ public:
     const int* getDaysInCourse() const;
     DegreeProgram getDegreeProgram() const;
 
-    // E2b: a mutator (i.e., setter) for each instance variable
+    // E2b: setter
     void setStudentID(const string& studentID);
     void setFirstName(const string& firstName);
     void setLastName(const string& lastName);
@@ -50,6 +50,6 @@ public:
     void setDaysInCourse(int daysInCourse1, int daysInCourse2, int daysInCourse3);
     void setDegreeProgram(DegreeProgram degreeProgram);
 
-    // E2d: a print() function to print specific student data in the required format:
+    // E2d: print() function
     void print() const;
 };
