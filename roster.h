@@ -14,6 +14,9 @@ private:
     int lastIndex = -1;
 
 public:
+    // F2a: parse and add to roster
+    void parse(const string& row);
+    
     // F3a: add student record
     void add(string studentID,
         string firstName,
