@@ -8,7 +8,7 @@ using std::cout;
 using std::endl;
 #include <sstream>
 
-// F2a stub: parse student datatable and forward each object to add()
+// F2a: parse student datatable and forward each object to add()
 void Roster::parse(const string& row) {
     // track the start and end of comma-delimited field
     size_t fieldStart = 0;
@@ -71,47 +71,107 @@ void Roster::parse(const string& row) {
         age, d1, d2, d3, dp);
 }
 
-// F3a stub
+// F3a: add student to roster
 void Roster::add(string studentID, string firstName, string lastName,
     string emailAddress, int age,
     int daysInCourse1, int daysInCourse2, int daysInCourse3,
-    DegreeProgram degreeProgram)
-{
-    // to be implemented
+    DegreeProgram degreeProgram) {
+    if (lastIndex < MAX_STUDENTS - 1) {
+        lastIndex = lastIndex + 1;
+
+        classRosterArray[lastIndex] = new Student(
+            studentID,
+            firstName,
+            lastName,
+            emailAddress,
+            age,
+            daysInCourse1,
+            daysInCourse2,
+            daysInCourse3,
+            degreeProgram
+        );
+    }
+    else {
+        cout << "Error: roster is full, cannot add student "
+            << studentID << endl;
+    }
 }
 
-// F3b stub
-void Roster::remove(string studentID)
-{
-    // to be implemented
+// F3b: remove student by id
+void Roster::remove(string studentID) {
+    bool found = false;
+
+    for (int i = 0; i <= lastIndex; ++i) {
+        if (classRosterArray[i]->getStudentID() == studentID) {
+            found = true;
+
+            delete classRosterArray[i];
+
+            for (int j = i; j < lastIndex; ++j) {
+                classRosterArray[j] = classRosterArray[j + 1];
+            }
+
+            classRosterArray[lastIndex] = nullptr;
+            lastIndex--;
+
+            cout << "Student " << studentID << " removed from roster." << endl;
+            break;
+        }
+    }
+
+    if (!found) {
+        cout << "Error: Student ID " << studentID << " not found." << endl;
+    }
 }
 
-// F3c stub
-void Roster::printAll() const
-{
-    // to be implemented
+// F3c: loop through array and call print on every student
+void Roster::printAll() const {
+    for (int i = 0; i <= lastIndex; ++i) {
+        classRosterArray[i]->print();
+    }
 }
 
-// F3d stub
-void Roster::printAverageDaysInCourse(string studentID) const
-{
-    // to be implemented
+// F3d print average days in course by student id
+void Roster::printAverageDaysInCourse(string studentID) const {
+    for (int i = 0; i <= lastIndex; ++i) {
+        if (classRosterArray[i]->getStudentID() == studentID) {
+            const int* days = classRosterArray[i]->getDaysInCourse();
+            double average = (days[0] + days[1] + days[2]) / 3.0;
+            cout << studentID << "\t" << average << endl;
+            return;
+        }
+    }
+    // error if studentID not found
+    cout << "Error: Student ID " << studentID << " not found." << endl;
 }
 
-// F3e stub
-void Roster::printInvalidEmails() const
-{
-    // to be implemented
+// F3e: identify invalid emails
+void Roster::printInvalidEmails() const {
+    cout << "Invalid emails:" << endl;
+    for (int i = 0; i <= lastIndex; ++i) {
+        string email = classRosterArray[i]->getEmailAddress();
+        if (email.find('@') == string::npos ||
+            email.find('.') == string::npos ||
+            email.find(' ') != string::npos) {
+            cout << email << endl;
+        }
+    }
+    cout << endl;
 }
 
-// F3f stub
-void Roster::printByDegreeProgram(DegreeProgram degreeProgram) const
-{
-    // to be implemented
+// F3f: print all students in specified degree
+void Roster::printByDegreeProgram(DegreeProgram degreeProgram) const {
+    for (int i = 0; i <= lastIndex; ++i) {
+        if (classRosterArray[i]->getDegreeProgram() == degreeProgram) {
+            classRosterArray[i]->print();
+        }
+    }
 }
 
-// F3g stub
-Roster::~Roster()
-{
-    // to be implemented
+// F3g: roster destructor
+Roster::~Roster() {
+    for (int i = 0; i <= lastIndex; ++i) {
+        delete classRosterArray[i];
+    }
+    cout << "Roster Deleted." << endl;
 }

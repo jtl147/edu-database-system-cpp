@@ -10,7 +10,7 @@
 class Roster {
 private:
     static const int MAX_STUDENTS = 5;
-    Student* classRosterArray[MAX_STUDENTS];
+    Student* classRosterArray[MAX_STUDENTS] = { nullptr };
     int lastIndex = -1;
 
 public:

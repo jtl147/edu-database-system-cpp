@@ -33,5 +33,31 @@ int main() {
         classRoster.parse(studentData[i]);
     }
 
+    //print the full class roster
+    classRoster.printAll();
+
+    //print list of invalid emails
+    classRoster.printInvalidEmails();
+
+    //print average days in course for each student
+    for (int i = 0; i < 5; ++i) {
+        // Extract studentID (substring before first comma)
+        size_t commaPos = studentData[i].find(',');
+        string id = studentData[i].substr(0, commaPos);
+        classRoster.printAverageDaysInCourse(id);
+    }
+
+    //print students in SOFTWARE program
+    classRoster.printByDegreeProgram(SOFTWARE);
+
+    //remove student by student ID
+    classRoster.remove("A3");
+
+    //print class roster again
+    classRoster.printAll();
+
+    //retry removal
+    classRoster.remove("A3");
+
 	return 0;
 }
