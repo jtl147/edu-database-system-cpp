@@ -35,6 +35,7 @@ int main() {
 
     //print the full class roster
     classRoster.printAll();
+    cout << endl;
 
     //print list of invalid emails
     classRoster.printInvalidEmails();
@@ -46,18 +47,26 @@ int main() {
         string id = studentData[i].substr(0, commaPos);
         classRoster.printAverageDaysInCourse(id);
     }
+    cout << endl;
 
     //print students in SOFTWARE program
+    cout << "Degree Program:" << endl;
     classRoster.printByDegreeProgram(SOFTWARE);
+    cout << endl;
 
     //remove student by student ID
+    cout << "Removing A3" << endl;
     classRoster.remove("A3");
+    cout << endl;
 
     //print class roster again
     classRoster.printAll();
+    cout << endl;
 
     //retry removal
+    cout << "Removing A3" << endl;
     classRoster.remove("A3");
+    cout << endl;
 
 	return 0;
 }

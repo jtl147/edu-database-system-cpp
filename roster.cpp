@@ -133,6 +133,11 @@ void Roster::printAll() const {
 
 // F3d print average days in course by student id
 void Roster::printAverageDaysInCourse(string studentID) const {
+    static bool headerDone = false;
+    if (!headerDone) {
+        cout << "Average Days in Course" << endl;
+        headerDone = true;
+    }
     for (int i = 0; i <= lastIndex; ++i) {
         if (classRosterArray[i]->getStudentID() == studentID) {
             const int* days = classRosterArray[i]->getDaysInCourse();
