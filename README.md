@@ -1,7 +1,6 @@
 # Student Roster Application (C++)
-
-**Course:** C867 – Scripting and Programming – Applications  
-**Author:** Jedi Lee (jlee1146)  
+ 
+**Author:** Jedi Lee 
 **Language:** C++  
 **IDE:** Visual Studio 2022 Community
 
